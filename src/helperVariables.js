@@ -23,6 +23,7 @@ const ageRegex = /^(1[89]|[2-9]\d)$/;
 const childrenRegex = /^[0-9]{1,2}$/;
 const isTrue = /^(true)$/;
 const colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
+const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 export const $Email = CustomField.extends($Text).with({
   render: {
@@ -194,10 +195,17 @@ export const $Password1 = CustomField.extends($Password).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill p-1 border-blue"
+          className="rounded-pill p-1 border-blue w-100"
         />
       );
     },
+  },
+  validate(value) {
+    if (!passRegex.test(value)) {
+      return Invalid("Al menos 8 carácteres, 1 letra y 1 número");
+    }
+
+    return Valid(value);
   },
 });
 

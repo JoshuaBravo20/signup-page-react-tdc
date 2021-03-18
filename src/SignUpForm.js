@@ -1,4 +1,4 @@
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3"; // Importar Recaptcha
+import ReCAPTCHA from 'react-google-recaptcha'; // Importar Recaptcha
 
 import {
   // Importar lo necesario de x-form
