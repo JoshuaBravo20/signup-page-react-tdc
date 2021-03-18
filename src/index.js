@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery';
+import 'popper.js';
+import 'bootstrap';
+import '@fortawesome/fontawesome-free/css/all.css';
+import 'animate.css';
+import App from './SignUpForm';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
