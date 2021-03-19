@@ -1,20 +1,12 @@
 import {
-  useForm,
-  $Form,
   $Text,
   $Password,
   $Checkbox,
-  $Button,
   $Number,
   CustomField,
   Invalid,
   Valid,
-  Option,
-  optional,
-  button,
-  $Radio,
   $Select,
-  checkbox,
 } from "@tdc-cl/x-form";
 
 const emailRegex = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/;
@@ -23,7 +15,7 @@ const ageRegex = /^(1[89]|[2-9]\d)$/;
 const childrenRegex = /^[0-9]{1,2}$/;
 const isTrue = /^(true)$/;
 const colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
-const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+export const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 export const $Email = CustomField.extends($Text).with({
   render: {
@@ -39,7 +31,7 @@ export const $Email = CustomField.extends($Text).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill border-blue p-1"
+          className="rounded-pill border-blue p-1 w-100"
         />
       );
     },
@@ -67,7 +59,7 @@ export const $Name = CustomField.extends($Text).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill p-1 border-blue"
+          className="rounded-pill p-1 border-blue w-100"
         />
       );
     },
@@ -95,7 +87,7 @@ export const $lastName = CustomField.extends($Text).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill p-1 border-blue"
+          className="rounded-pill p-1 border-blue w-100"
         />
       );
     },
@@ -123,7 +115,7 @@ export const $Age = CustomField.extends($Number).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill p-1 border-blue"
+          className="rounded-pill p-1 border-blue w-100"
         />
       );
     },
@@ -178,7 +170,11 @@ export const $Gender = CustomField.extends($Select).with({
       );
     },
   },
-  options: ["Masculino", "Femenino", "Otro (Especifique)"],
+  options: [
+    { value: "F", label: "Femenino" },
+    { value: "M", label: "Masculino" },
+    { value: "X", label: "Otro (especifique)" },
+  ],
 });
 
 export const $Password1 = CustomField.extends($Password).with({
@@ -219,7 +215,7 @@ export const $GenderSpecify = CustomField.extends($Text).with({
         <input
           {...field.inputProps}
           ref={field.inputRef}
-          className="rounded-pill p-1 border-blue"
+          className="rounded-pill p-1 border-blue w-100"
         />
       );
     },
