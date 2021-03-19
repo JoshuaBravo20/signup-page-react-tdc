@@ -97,10 +97,6 @@ function SignUpForm() {
       return Valid(value);
     },
     validate(value) {
-      if (!captchaRegex.test(value)) {
-        return Invalid("Requerido!");
-      }
-
       return Valid(value);
     },
   });
