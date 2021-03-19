@@ -11,6 +11,7 @@ import {
   optional,
   XFormContext,
   spanish,
+  $Checkbox,
 } from "@tdc-cl/x-form";
 import {
   $Name,
@@ -23,8 +24,9 @@ import {
   $GenderSpecify,
   $CheckboxVal,
   $FavColor,
+  isTrue,
 } from "./helperVariables"; // Traer los custom fields y validaciones
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   // Establecer contexto en español
@@ -71,15 +73,20 @@ function SignUpForm() {
     },
   });
 
-  const $captchaBox = CustomField({
+  const $captchaBox = CustomField.extends($CheckboxVal).with({
     render: {
       FieldContainer({ field, children }) {
-        return <div ref={field.containerRef}>{children}</div>;
+        return (
+          <div ref={field.containerRef} className="">
+            <i class="fas fa-lock text-blue"></i> Verificación {children}
+          </div>
+        );
       },
       Input({ field }) {
         return (
           <>
             <ReCAPTCHA
+              {...field.inputProps}
               value={field.input.value}
               onChangeValue={(newV) => {
                 field.input.setValue(newV);
@@ -92,9 +99,6 @@ function SignUpForm() {
           </>
         );
       },
-    },
-    parse(value) {
-      return Valid(value);
     },
     validate(value) {
       return Valid(value);
@@ -132,7 +136,7 @@ function SignUpForm() {
         }),
         fav_color: optional($FavColor("Color Favorito")),
         tos: $CheckboxVal("Acepto los términos y condiciones del servicio"),
-        captcha: $captchaBox("Verificación"),
+        captcha: $captchaBox(),
       },
       submit: $Button("Crear cuenta", {
         async onValid(values) {

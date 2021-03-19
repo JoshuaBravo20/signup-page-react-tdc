@@ -13,9 +13,9 @@ const emailRegex = /^(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|
 const nameRegex = /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
 const ageRegex = /^(1[89]|[2-9]\d)$/;
 const childrenRegex = /^[0-9]{1,2}$/;
-const isTrue = /^(true)$/;
+export const isTrue = /^(true)$/;
 const colorRegex = /^#(?:[0-9a-fA-F]{3}){1,2}$/;
-export const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+const passRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
 
 export const $Email = CustomField.extends($Text).with({
   render: {
